@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Background Color</title>
+</head>
+<body>
+    <h1>Page with Random Background Color</h1>
+    
+    <script>
+        function getRandomColor() {
+            // Generate a random color in the hex format
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+        // Set a random background color when the page loads
+        document.body.style.backgroundColor = getRandomColor();
+    </script>
+</body>
+</html>

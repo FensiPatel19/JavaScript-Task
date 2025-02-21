@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task: Increment/Decrement Number</title>
+
+    <script>
+        let number = 0;
+
+        function increment() {
+            if (number < 10) {
+                number = number + 1;
+                document.getElementById('display').textContent = `The incremented value is ${number}`;
+            } else {
+                alert('You can only increment till 10');
+            }
+        }
+
+        function decrement() {
+            if (number > 0) {
+                number = number - 1;
+                document.getElementById('display').textContent = `The decremented value is ${number}`;
+            } else {
+                alert('You can only decrement till 0');
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 600px;
+            flex-direction: column;
+        }
+
+        div {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        h1 {
+            color: #0d0d0e;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 10px;
+            border-radius: 5px;
+            background-color: #09b9e6;
+            color: white;
+        }
+
+        p {
+            font-size: 18px;
+            margin-top: 20px;
+            color: #3a3a3a;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+        <h1>Task: Increment/Decrement Number</h1>
+    
+
+    <div>
+        <button type="button" onclick="increment()">Increment</button>
+        <button type="button" onclick="decrement()">Decrement</button>
+        <p id="display">The current value is 0</p>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP Generation</title>
+</head>
+<script>
+    function generateOtp(){
+        let otp=0;
+        otp = Math.floor(1000 + Math.random() * 9999); 
+        document.getElementById('myotpid').textContent = otp;
+    }
+</script>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        color: #333;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 600px;
+        flex-direction: column;
+    }
+
+    div {
+        text-align: center;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+    }
+
+    h1 {
+        color: #0d0d0e;
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    button {
+        padding: 10px 20px;
+        font-size: 16px;
+        margin: 10px;
+        border-radius: 5px;
+        background-color: #09b9e6;
+        color: white;
+    }
+
+    p {
+        font-size: 18px;
+        margin-top: 20px;
+        color: #3a3a3a;
+        font-weight: bold;
+    }
+</style>
+<body>
+        <h1>
+            Generate The OTP
+        </h1>
+    <div>
+        <button type="button" onclick="generateOtp()">GenerateOTP</button>
+        <button type="button" onclick="document.getElementById('myotpid').textContent = ' ' ">Clear</button>
+        <p id="myotpid"></p>
+
+    </div>
+</body>
+</html>
