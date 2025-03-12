@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess the Number</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        input {
+            padding: 10px;
+            font-size: 16px;
+            margin: 10px;
+            text-align: center;
+            width: 100px;
+        }
+        .button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+        }
+        .result {
+            font-size: 20px;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Guess the Number (1-10)</h2>
+        <input type="number" id="userGuess" min="1" max="10" placeholder="Enter number">
+        <button class="button" onclick="checkGuess()">Submit</button>
+        <p class="result"></p>
+    </div>
+
+    <script>
+        let randomNumber;
+
+       
+        function generateRandomNumber() {
+            randomNumber = Math.floor(Math.random() * 10) + 1; 
+            console.log("Generated Number:", randomNumber); 
+        }
+
+       
+        function checkGuess() {
+            let userInput = document.getElementById("userGuess").value;
+            let resultText = document.querySelector(".result");
+
+            if (userInput == randomNumber) {
+                resultText.innerHTML = "Success! You guessed the right number!";
+                resultText.style.color = "green";
+            } else {
+                resultText.innerHTML = "Wrong guess! Try again.";
+                resultText.style.color = "red";
+            }
+        }
+
+        
+        window.onload = generateRandomNumber;
+    </script>
+
+</body>
+</html>

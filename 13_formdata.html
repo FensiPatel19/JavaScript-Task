@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation and Display</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            width: 50%;
+            margin: 0 auto;
+            padding: 20px;
+            border: 2px solid black;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+        label {
+            font-weight: bold;
+        }
+        input, select {
+            padding: 5px;
+            margin: 5px 0;
+            width: 100%;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+        button {
+            padding: 10px;
+            background-color: blue;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+       
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Fill the Form</h2>
+        <label>Enter Name:</label>
+        <input type="text" id="name">
+        <div class="error" id="nameError"></div>
+
+        <label>Enter Mobile No:</label>
+        <input type="text" id="mobile">
+        <div class="error" id="mobileError"></div>
+
+        <label>Gender:</label>
+        <input type="radio" name="gender" value="Male"> Male
+        <input type="radio" name="gender" value="Female"> Female
+        <div class="error" id="genderError"></div>
+
+        <label>Hobby:</label>
+        <input type="checkbox" name="hobby" value="Reading"> Reading
+        <input type="checkbox" name="hobby" value="Dancing"> Dancing
+        <input type="checkbox" name="hobby" value="Singing"> Singing
+
+        <label>City:</label>
+        <select id="city">
+            <option value="">---Select City---</option>
+            <option value="Ahmedabad">Ahmedabad</option>
+            <option value="Mumbai">Mumbai</option>
+            <option value="Delhi">Delhi</option>
+            <option value="Bangalore">Bangalore</option>
+        </select>
+        <div class="error" id="cityError"></div>
+
+        <button onclick="validateForm()">Submit Data</button>
+    </div>
+
+    <div id="output" class="result" style="display: none;"></div>
+
+    <script>
+        function validateForm() {
+            let name = document.getElementById("name").value.trim();
+            let mobile = document.getElementById("mobile").value.trim();
+            let gender = document.querySelector('input[name="gender"]:checked');
+            let city = document.getElementById("city").value;
+            let hobbies = document.querySelectorAll('input[name="hobby"]:checked');
+
+          
+            document.getElementById("nameError").innerText = "";
+            document.getElementById("mobileError").innerText = "";
+            document.getElementById("genderError").innerText = "";
+            document.getElementById("cityError").innerText = "";
+
+            let isValid = true;
+
+           
+            if (name === "") {
+                document.getElementById("nameError").innerText = "Name is required!";
+                isValid = false;
+            }
+
+            
+            let mobilePattern = /^[6-9]\d{9}$/;
+            if (!mobilePattern.test(mobile)) {
+                document.getElementById("mobileError").innerText = "Enter a valid 10-digit mobile number!";
+                isValid = false;
+            }
+
+           
+            if (!gender) {
+                document.getElementById("genderError").innerText = "Please select your gender!";
+                isValid = false;
+            }
+
+            
+            if (city === "") {
+                document.getElementById("cityError").innerText = "Please select a city!";
+                isValid = false;
+            }
+
+            if (!isValid) {
+                return;
+            }
+
+            
+            let selectedHobbies = [];
+            hobbies.forEach((hobby) => selectedHobbies.push(hobby.value));
+
+            
+            let outputDiv = document.getElementById("output");
+            outputDiv.style.display = "block";
+            outputDiv.innerHTML = `
+                <h3>Submitted Data:</h3>
+                <p><strong>Name:</strong> ${name}</p>
+                <p><strong>Mobile No:</strong> ${mobile}</p>
+                <p><strong>Gender:</strong> ${gender.value}</p>
+                <p><strong>Hobbies:</strong> ${selectedHobbies.length ? selectedHobbies.join(", ") : "None"}</p>
+                <p><strong>City:</strong> ${city}</p>
+            `;
+        }
+    </script>
+
+</body>
+</html>

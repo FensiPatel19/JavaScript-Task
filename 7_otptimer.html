@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP Timer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .timer {
+            font-size: 24px;
+            margin: 10px;
+            font-weight: bold;
+        }
+        .button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .start-btn {
+            background-color: #28a745;
+            color: white;
+        }
+        .resend-btn {
+            background-color: #dc3545;
+            color: white;
+            display: none; 
+        }
+    </style>
+</head>
+<body>
+    <h2>OTP Timer</h2>
+    <div class="container">
+        <p class="timer">00:10</p>
+        <button class="button start-btn" onclick="startTimer()">Start Timer</button>
+        <button class="button resend-btn" onclick="startTimer()">Resend OTP</button>
+    </div>
+
+    <script>
+        let timerInterval;
+        let timeLeft = 10;
+
+        function startTimer() {
+            timeLeft = 10; 
+            document.querySelector(".timer").innerText = "00:10";
+            document.querySelector(".start-btn").style.display = "none";
+            document.querySelector(".resend-btn").style.display = "none";
+
+            timerInterval = setInterval(function () {
+                timeLeft--;
+                let seconds = timeLeft < 10 ? "0" + timeLeft : timeLeft; 
+                document.querySelector(".timer").innerText = "00:" + seconds;
+
+                if (timeLeft === 0) {
+                    clearInterval(timerInterval);
+                    document.querySelector(".resend-btn").style.display = "inline-block";
+                }
+            }, 1000);
+        }
+    </script>
+
+</body>
+</html>
